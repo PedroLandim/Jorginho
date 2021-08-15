@@ -5,13 +5,13 @@ from random import randint
 
 pygame.init()
 
-class Bulbassauro(pygame.sprite.Sprite):
-  # Classe responsável por criar o inimigo bulbassauro
+class Farfetch(pygame.sprite.Sprite):
+  # Classe responsável por criar o inimigo farfetch
   def __init__(self, width, height, windowWidth, windowHeight, tela):
     angulo = 25
     self.width = width
     self.height = height
-    self.img = pygame.transform.scale(pygame.image.load('bulbasaur.png'), (self.width, self.height))
+    self.img = pygame.transform.scale(pygame.image.load('assets/farfetch.png'), (self.width, self.height))
     self.img = pygame.transform.rotate(self.img, angulo)
     self.img = pygame.transform.flip(self.img, True, False)
     self.velocidadeY = 0.02
@@ -41,14 +41,14 @@ class Bulbassauro(pygame.sprite.Sprite):
       self.velocidadeX = -self.velocidadeX
 
 
-largura, altura = 640, 480
+largura, altura = 600, 720
 
 
 tela = pygame.display.set_mode((largura,altura))
 pygame.display.set_caption('Jorginho')
 
 
-bulbassauro = Bulbassauro(100, 100, largura, altura, tela)
+farfetch = Farfetch(80, 80, largura, altura, tela)
 
 while True:
   tela.fill((0,0,0))
@@ -56,7 +56,7 @@ while True:
     if event.type == pygame.QUIT:
       pygame.quit()
       exit()
-  bulbassauro.draw()
-  bulbassauro.update(bulbassauro.x, bulbassauro.y)
+  farfetch.draw()
+  farfetch.update(farfetch.x, farfetch.y)
 
   pygame.display.update()
