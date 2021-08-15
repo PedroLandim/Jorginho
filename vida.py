@@ -28,7 +28,7 @@ class Enemy(General):
 
 
 class Player(General):
-    def is_dead(self):
+    def is_dead(self): #esse parametro possivelmente vai para o General qnd a gente randomizar as berries e os pokemons
         '''
         This method checks if the player life has reached zero.
         '''
