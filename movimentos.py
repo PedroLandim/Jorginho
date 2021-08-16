@@ -1,41 +1,27 @@
-import pygame
+import pygame as pg
 
-pygame.init()
+class Pikachu(pg.sprite.Sprite):
 
-x = 70
-y = 520
-velocidade = 10
+    def __init__(self, width, height, windowWidth, windowHeight, tela):
+        self.width = width
+        self.height = height
+        self.img = pg.transform.scale(pg.image.load("Assets/pikachuskate.png"), (self.width, self.height))
+        self.velocidadeX = 0.17
+        self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
+        self.x = windowWidth/2 - width/2
+        self.y = 600
+        self.tela = tela
+    
+    def draw(self):
+        self.tela.blit(self.img, (self.x, self.y))
 
-#tamanho da tela
-janela = pygame.display.set_mode((800,600))
+    def move(self):
+        comandos = pg.key.get_pressed()
+        if comandos[pg.K_RIGHT]:
+            self.x += self.velocidadeX
+            self.img = pg.transform.flip(self.img, True, False)
+        if comandos[pg.K_LEFT]:
+            self.x += -self.velocidadeX
+            self.img = pg.transform.flip(self.img, True, False)
 
-#nome que aparece em cima da janela
-pygame.display.set_caption("Jorginho") #vai mudar o nome do jogo ou vai ser esse mesmo?
-
-janela_aberta = True
-
-#enquanto a janela tiver aberta, vai executar o que ta dentro do while
-while janela_aberta:
-    pygame.time.delay(50)
-
-    #só fecha a janela quando apertar no botão vermelho do X
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            janela_aberta = False
-
-    #criação dos comandos de movimento
-    comandos = pygame.key.get_pressed()
-
-    if comandos[pygame.K_RIGHT]:
-        x += velocidade
-
-    if comandos[pygame.K_LEFT]:
-        x -= velocidade
-            
-    janela.fill((0,0,0))
-
-    #criando o objeto na tela(vai ser o pokemon, mas por enquanto vou colocar um círculo aleatório)
-    pygame.draw.circle(janela, (210, 0, 0), (70, 520), 50)
-    pygame.display.update()
-
-pygame.quit()
