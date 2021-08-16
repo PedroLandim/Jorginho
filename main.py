@@ -29,6 +29,4 @@ while True:
   pikachu.update()
   inimigos.draw(tela)
   inimigos.update()
-
-
   pg.display.update()

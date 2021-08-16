@@ -30,9 +30,8 @@ class Pikachu(pg.sprite.Sprite):
             if self.direcao == 1:
                 self.img = pg.transform.flip(self.img, True, False)
             self.direcao = -1
+  
 
-            
-         
 
 
 
