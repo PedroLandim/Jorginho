@@ -14,8 +14,8 @@ class Farfetch(pygame.sprite.Sprite):
     self.img = pygame.transform.scale(pygame.image.load('assets/farfetch.png'), (self.width, self.height))
     self.img = pygame.transform.rotate(self.img, angulo)
     self.img = pygame.transform.flip(self.img, True, False)
-    self.velocidadeY = 0.02
-    self.velocidadeX = 0.14
+    self.velocidadeY = 0.32
+    self.velocidadeX = 0.29
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
     self.x = randint(0, self.windowWidth-self.width)
@@ -49,13 +49,14 @@ pygame.display.set_caption('Jorginho')
 
 
 farfetch = Farfetch(80, 80, largura, altura, tela)
-
+background = pygame.image.load("Assets/background.jpeg")
 while True:
   tela.fill((0,0,0))
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       pygame.quit()
       exit()
+  tela.blit(background,(0,0))
   farfetch.draw()
   farfetch.update(farfetch.x, farfetch.y)
 
