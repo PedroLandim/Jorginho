@@ -35,3 +35,77 @@ class Farfetch(pg.sprite.Sprite):
     if self.x <= -self.width/5:
       self.img = pg.transform.flip(self.img, True, False)
       self.velocidadeX = -self.velocidadeX
+
+class Zubat(pg.sprite.Sprite):
+  # Classe responsável por criar o inimigo farfetch
+  def __init__(self, width, height, windowWidth, windowHeight, tela):
+    self.width = width
+    self.height = height
+    self.img = pg.transform.scale(pg.image.load('assets/zubat.png'), (self.width, self.height))
+    self.velocidadeY = 0.20
+    self.windowWidth = windowWidth
+    self.windowHeight = windowHeight
+    self.x = randint(0, self.windowWidth-self.width)
+    self.y = -height
+    self.tela = tela
+    
+  def draw(self):
+    #desenha a imagem na tela do jogo.
+    self.tela.blit(self.img, (self.x,self.y))
+
+  def update(self):
+    # movimenta o pokemon de acordo com a velocidade.
+    self.y += self.velocidadeY
+    if self.y >= self.windowHeight:
+      self.y = -self.height
+      self.x = randint(0, self.windowWidth-self.width)
+
+class Dragonite(pg.sprite.Sprite):
+  # Classe responsável por criar o inimigo farfetch
+  def __init__(self, width, height, windowWidth, windowHeight, tela):
+    self.width = width
+    self.height = height
+    self.img = pg.transform.scale(pg.image.load('assets/dragonite.png'), (self.width, self.height))
+    self.velocidadeY = 0.10
+    self.windowWidth = windowWidth
+    self.windowHeight = windowHeight
+    self.x = randint(0, self.windowWidth-self.width)
+    self.y = -height
+    self.tela = tela
+    
+  def draw(self):
+    #desenha a imagem na tela do jogo.
+    self.tela.blit(self.img, (self.x,self.y))
+
+  def update(self):
+    # movimenta o pokemon de acordo com a velocidade.
+    self.y += self.velocidadeY
+    if self.y >= self.windowHeight:
+      self.y = -self.height
+      self.x = randint(0, self.windowWidth-self.width)
+
+class Pidgeot(pg.sprite.Sprite):
+  # Classe responsável por criar o inimigo farfetch
+  def __init__(self, width, height, windowWidth, windowHeight, tela):
+    self.width = width
+    self.height = height
+    self.img = pg.transform.scale(pg.image.load('assets/pidgeot.png'), (self.width, self.height))
+    self.velocidadeY = 0.30
+    self.windowWidth = windowWidth
+    self.windowHeight = windowHeight
+    self.x = randint(0, self.windowWidth-self.width)
+    self.y = -height
+    self.tela = tela
+    
+  def draw(self):
+    #desenha a imagem na tela do jogo.
+    self.tela.blit(self.img, (self.x,self.y))
+
+  def update(self):
+    # movimenta o pokemon de acordo com a velocidade.
+    self.y += self.velocidadeY
+    if self.y >= self.windowHeight:
+      self.y = -self.height
+      self.x = randint(0, self.windowWidth-self.width)
+      
+      

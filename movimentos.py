@@ -18,7 +18,7 @@ class Pikachu(pg.sprite.Sprite):
         self.tela.blit(self.img, (self.x, self.y))
 
 
-    def move(self):
+    def update(self):
         comandos = pg.key.get_pressed()
         if comandos[pg.K_RIGHT] and not(self.x >= self.windowWidth-self.width):
             self.x += self.velocidadeX
