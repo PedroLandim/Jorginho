@@ -21,7 +21,6 @@ inimigos.add(Dragonite(160, 160, largura, altura, tela))
 background = pg.image.load("Assets/background.jpeg")
 
 while True:
-  tela.fill((0,0,0))
   for event in pg.event.get():
     if event.type == pg.QUIT:
       pg.quit()

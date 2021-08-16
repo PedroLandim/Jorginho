@@ -35,10 +35,10 @@ class Farfetch(pg.sprite.Sprite):
     if self.x >= self.windowWidth-self.width:
       self.image = pg.transform.flip(self.image, True, False)
       self.velocidadeX = -self.velocidadeX
-    if self.x <= 0:
+    if self.x <= -20:
       self.image = pg.transform.flip(self.image, True, False)
       self.velocidadeX = -self.velocidadeX
-    self.rect.topleft = (self.x,self.y)
+    self.rect.topleft = (self.x, self.y)
 
 class Zubat(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
