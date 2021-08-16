@@ -5,8 +5,8 @@ class Pikachu(pg.sprite.Sprite):
     def __init__(self, width, height, windowWidth, windowHeight, tela):
         self.width = width
         self.height = height
-        self.img = pg.transform.scale(pg.image.load("Assets/pikachuskate.png"), (self.width, self.height))
-        self.velocidadeX = 0.27
+        self.img = pg.transform.scale(pg.image.load("Assets/pikachuskatista2.png"), (self.width, self.height))
+        self.velocidadeX = 3
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.x = windowWidth/2 - width/2

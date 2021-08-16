@@ -12,8 +12,8 @@ class Farfetch(pg.sprite.Sprite):
     self.image = pg.transform.scale(pg.image.load('assets/farfetch.png'), (self.width, self.height))
     self.image = pg.transform.rotate(self.image, angulo)
     self.image = pg.transform.flip(self.image, True, False)
-    self.velocidadeY = 0.15
-    self.velocidadeX = 0.18
+    self.velocidadeY = 1.5
+    self.velocidadeX = 1.8
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
     self.x = randint(0, self.windowWidth-self.width)
@@ -47,7 +47,7 @@ class Zubat(pg.sprite.Sprite):
     self.width = width
     self.height = height
     self.image = pg.transform.scale(pg.image.load('assets/zubat.png'), (self.width, self.height))
-    self.velocidadeY = 0.20
+    self.velocidadeY = 2
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
     self.x = randint(0, self.windowWidth-self.width)
@@ -74,7 +74,7 @@ class Dragonite(pg.sprite.Sprite):
     self.width = width
     self.height = height
     self.image = pg.transform.scale(pg.image.load('assets/dragonite.png'), (self.width, self.height))
-    self.velocidadeY = 0.10
+    self.velocidadeY = 1
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
     self.x = randint(0, self.windowWidth-self.width)
@@ -101,7 +101,7 @@ class Pidgeot(pg.sprite.Sprite):
     self.width = width
     self.height = height
     self.image = pg.transform.scale(pg.image.load('assets/pidgeot.png'), (self.width, self.height))
-    self.velocidadeY = 0.30
+    self.velocidadeY = 3
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
     self.x = randint(0, self.windowWidth-self.width)

@@ -2,6 +2,8 @@ from inimigos import *
 from movimentos import *
 import pygame as pg
 pg.init()
+clock = pg.time.Clock()
+font = pg.font.Font(None,30)
 
 largura, altura = 600, 720
 
@@ -10,7 +12,7 @@ tela = pg.display.set_mode((largura,altura))
 pg.display.set_caption('Jorginho')
 
 inimigos = pg.sprite.Group()
-pikachu = Pikachu(120,120, largura, altura, tela)
+pikachu = Pikachu(110,110, largura, altura, tela)
 inimigos.add(Farfetch(80, 80, largura, altura, tela))
 inimigos.add(Pidgeot(100, 100, largura, altura, tela))
 inimigos.add(Zubat(60, 60, largura, altura, tela))
@@ -29,4 +31,7 @@ while True:
   pikachu.update()
   inimigos.draw(tela)
   inimigos.update()
+  fps = font.render(str(int(clock.get_fps())),True,"WHITE")
+  tela.blit(fps,(50,50))
+  clock.tick(60)
   pg.display.update()
