@@ -24,6 +24,10 @@ inimigos.add(Pidgeot(100, 100, largura, altura, tela))
 inimigos.add(Zubat(60, 60, largura, altura, tela))
 inimigos.add(Dragonite(160, 160, largura, altura, tela))
 
+berries = pg.sprite.Group()
+
+
+
 background = pg.image.load("Assets/background.jpeg")
 
 while True:
@@ -38,23 +42,19 @@ while True:
   pikachu.update()
   
   inimigos.draw(tela)
-  inimigos.update()
+  inimigos.update(bullet, berries)
+
+  berries.draw(tela)
+  berries.update()
   
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
   tela.blit(fps,(50,50))
   clock.tick(60)
 
-  berry = Berry(60,60, largura, altura, tela)
 
   for i in range (len(inimigos)):
-    if General.check_collision(inimigos[i], bullet):
-      Enemy.enemy_loss(inimigos[i])
-      if General.is_dead:
-        #gerar berry
-        parameter = random.randrange(0, 1)
-        if parameter == 1:
-            berry.draw()
-            berry.update()
+    #colisao de inimigos com bala
+    
   
   if General.check_collision(pikachu, Berry):
     Player.player_gain(pikachu)

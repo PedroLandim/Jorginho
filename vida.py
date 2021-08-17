@@ -27,16 +27,16 @@ class General(pg.sprite.Sprite):
 
 class Berry(pg.sprite.Sprite):
     #responsável por criar as berries
-    def __init__(self, width, height, windowWidth, windowHeight, tela):
+    def __init__(self, windowWidth, windowHeight, tela, pokemonX, pokemonY):
                 super().__init__()
-                self.width = width
-                self.height = height
+                self.width = 60
+                self.height = 60
                 self.image = pg.transform.scale(pg.image.load('assets/berry.png'), (self.width, self.height))
                 self.velocidadeY = 1
                 self.windowWidth = windowWidth
                 self.windowHeight = windowHeight
-                self.x = randint(0, self.windowWidth-self.width)
-                self.y = -height
+                self.x = pokemonX
+                self.y = pokemonY
                 self.tela = tela
                 self.rect = self.image.get_rect()
                 self.life = 3
@@ -64,8 +64,10 @@ class Enemy(General):
 class Player(General):
 
     def player_gain(player):
-        player.life += 1 #da para criar berry com poderes diferentes e colocar em condicoes etc.
+        if player.life < 3:
+            player.life += 1 #da para criar berry com poderes diferentes e colocar em condicoes etc.
     
     def player_loss(player):
         player.life -= 1
-        General.is_dead()
+        if General.is_dead(player):
+            Pikachu.kill()

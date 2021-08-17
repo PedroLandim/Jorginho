@@ -1,5 +1,7 @@
 import pygame as pg
 from random import randint
+import random
+from vida import *
 
 
 class Farfetch(pg.sprite.Sprite):
@@ -26,7 +28,17 @@ class Farfetch(pg.sprite.Sprite):
     #desenha a imagem na tela do jogo.
     self.tela.blit(self.image, (self.x,self.y))
 
-  def update(self):
+  def update(self, bullet, berries):
+
+    if General.check_collision(self, bullet):
+      Enemy.enemy_loss(self)
+      if General.is_dead:
+        #gerar berry
+        parameter = random.randrange(0, 1)
+        if parameter == 1:
+          berries.add(Berry(60,60, 600, 720, self.tela, self.x, self.y))
+          
+
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     self.x += self.velocidadeX
@@ -61,7 +73,16 @@ class Zubat(pg.sprite.Sprite):
     #desenha a imagem na tela do jogo.
     self.tela.blit(self.image, (self.x,self.y))
 
-  def update(self):
+  def update(self, bullet, berries):
+
+    if General.check_collision(self, bullet):
+      Enemy.enemy_loss(self)
+      if General.is_dead:
+        #gerar berry
+        parameter = random.randrange(0, 1)
+        if parameter == 1:
+          berries.add(Berry(60,60, 600, 720, self.tela, self.x, self.y))
+          
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight:
@@ -89,7 +110,16 @@ class Dragonite(pg.sprite.Sprite):
     #desenha a imagem na tela do jogo.
     self.tela.blit(self.image, (self.x,self.y))
 
-  def update(self):
+  def update(self, bullet, berries):
+
+    if General.check_collision(self, bullet):
+      Enemy.enemy_loss(self)
+      if General.is_dead:
+        #gerar berry
+        parameter = random.randrange(0, 1)
+        if parameter == 1:
+          berries.add(Berry(60,60, 600, 720, self.tela, self.x, self.y))
+
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight:
@@ -117,7 +147,16 @@ class Pidgeot(pg.sprite.Sprite):
     #desenha a imagem na tela do jogo.
     self.tela.blit(self.image, (self.x,self.y))
 
-  def update(self):
+  def update(self, bullet, berries):
+
+    if General.check_collision(self, bullet):
+      Enemy.enemy_loss(self)
+      if General.is_dead:
+        #gerar berry
+        parameter = random.randrange(0, 1)
+        if parameter == 1:
+          berries.add(Berry(60,60, 600, 720, self.tela, self.x, self.y))
+          
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight:
