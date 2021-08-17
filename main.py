@@ -1,5 +1,4 @@
 import pygame as pg
-import random
 from inimigos import *
 from movimentos import *
 from vida import *
@@ -50,31 +49,13 @@ while True:
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
   tela.blit(fps,(50,50))
   clock.tick(60)
-
-
-<<<<<<< HEAD
-  for i in range (len(inimigos)):
-    #colisao de inimigos com bala
     
-=======
-  '''for i in range (len(inimigos)):
-    if General.check_collision(inimigos[i], bullet):
-      Enemy.enemy_loss(inimigos[i])
-      if General.is_dead:
-        #gerar berry
-        parameter = random.randrange(0, 1)
-        if parameter == 1:
-            berry.draw()
-            berry.update()
->>>>>>> f70bac3b163868ba2f271be5e7cf1866097385f7
   
-  if General.check_collision(pikachu, Berry):
+  if General.check_collision(pikachu, berries):
     Player.player_gain(pikachu)
 
   if General.check_collision(pikachu, inimigos):
     Player.player_loss(pikachu)
-    if General.is_dead:
-        Pikachu.kill()
         #tem que acabar com o jogo aqui
-    '''
+    
   pg.display.update()
