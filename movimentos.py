@@ -21,12 +21,12 @@ class Pikachu(pg.sprite.Sprite):
 
     def update(self):
         comandos = pg.key.get_pressed()
-        if comandos[pg.K_RIGHT] and not(self.x >= self.windowWidth-self.width):
+        if comandos[pg.K_RIGHT] and self.x < self.windowWidth-self.width:
             self.x += self.velocidadeX
             if self.direcao == -1:
                 self.img = pg.transform.flip(self.img, True, False)
             self.direcao = 1
-        if comandos[pg.K_LEFT] and not(self.x <= 0):
+        if comandos[pg.K_LEFT] and self.x > 0:
             self.x -= self.velocidadeX
             if self.direcao == 1:
                 self.img = pg.transform.flip(self.img, True, False)

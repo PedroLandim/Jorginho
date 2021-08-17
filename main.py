@@ -39,17 +39,17 @@ while True:
   
   pikachu.draw()
   pikachu.update()
-  
+  '''
   inimigos.draw(tela)
   inimigos.update(bullet, berries)
 
   berries.draw(tela)
   berries.update()
-  
+  '''
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
   tela.blit(fps,(50,50))
   clock.tick(60)
-    
+  '''
   
   if General.check_collision(pikachu, berries):
     Player.player_gain(pikachu)
@@ -57,5 +57,5 @@ while True:
   if General.check_collision(pikachu, inimigos):
     Player.player_loss(pikachu)
         #tem que acabar com o jogo aqui
-    
+   ''' 
   pg.display.update()
