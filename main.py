@@ -46,7 +46,7 @@ while True:
 
   berry = Berry(60,60, largura, altura, tela)
 
-  for i in range (len(inimigos)):
+  '''for i in range (len(inimigos)):
     if General.check_collision(inimigos[i], bullet):
       Enemy.enemy_loss(inimigos[i])
       if General.is_dead:
@@ -64,5 +64,5 @@ while True:
     if General.is_dead:
         Pikachu.kill()
         #tem que acabar com o jogo aqui
-    
+    '''
   pg.display.update()
