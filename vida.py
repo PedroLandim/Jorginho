@@ -4,6 +4,24 @@ from movimentos import Pikachu
 import pygame as pg
 from random import randint
 
+#rrrr
+class Bala(pg.sprite.Sprite):
+    def __init__(self, windowWidth, windowHeight, width):
+        pg.sprite.Sprite.__init__(self)
+        self.ImagemBala = pg.image.load('assets/relampago.png')
+
+        self.rect = self.imagemBala.get.rect()
+        self.velocidadeBala = 5
+
+        #nao sei se essa posicao ta certa
+        self.rect.top = windowHeight
+        self.rect.left = windowWidth/2 - width/2
+
+    def trajetoria(self):
+        self.rect.top = self.rect.top - self.velocidadeBala
+
+
+#rrr
 
 class General(pg.sprite.Sprite):
     def check_collision(sprite: pg.sprite.Sprite, group: pg.sprite.Group):
