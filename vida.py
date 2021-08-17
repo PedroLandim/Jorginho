@@ -30,7 +30,7 @@ class General(pg.sprite.Sprite):
         group parameter: group of sprites that will be checked
         This function checks if any sprites from group collide with sprite.
         """
-        if len(pg.sprite.spritecollide(sprite, group, dokill=True)):
+        if pg.sprite.spritecollide(sprite, group, dokill=True):
             return True
         return False
 
@@ -87,5 +87,5 @@ class Player(General):
     
     def player_loss(player):
         player.life -= 1
-        if General.is_dead(player):
-            Pikachu.kill()
+        if player.life < 1:
+            player.kill()
