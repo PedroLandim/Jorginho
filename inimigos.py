@@ -32,7 +32,7 @@ class Farfetch(pg.sprite.Sprite):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead:
+      if General.is_dead():
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -77,7 +77,7 @@ class Zubat(pg.sprite.Sprite):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead:
+      if General.is_dead():
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -114,7 +114,7 @@ class Dragonite(pg.sprite.Sprite):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead:
+      if General.is_dead():
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -151,7 +151,7 @@ class Pidgeot(pg.sprite.Sprite):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead:
+      if General.is_dead():
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
