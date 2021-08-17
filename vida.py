@@ -1,34 +1,22 @@
 #qnd inimigo morre - gera berry, se sprite da berry entrar em contato com o pokemon +1 vida
 #qnd se entra em contato com o pokemon, o inimigo tira uma qtd de vida x dele e some da tela
-import pygame
+from movimentos import Pikachu
+import pygame as pg
+from random import randint
 
-class General:
-     def check_collision(sprite: pygame.sprite.Sprite, group: pygame.sprite.Group):
+
+class General(pg.sprite.Sprite):
+    def check_collision(sprite: pg.sprite.Sprite, group: pg.sprite.Group):
         """
         sprite parameter: Sprite that will be used for collision checking
         group parameter: group of sprites that will be checked
         This function checks if any sprites from group collide with sprite.
         """
-        if len(pygame.sprite.spritecollide(sprite, group, dokill=True)):
+        if len(pg.sprite.spritecollide(sprite, group, dokill=True)):
             return True
         return False
 
-
-class Enemy(General):
-
-    def enemy_dies(self):
-        #nesse caso o inimigo sempre morre com um tiro, mas da para randomizar o dano
-        self.life = 0
-        self.kill()
-        #gerar berry
-
-    if General.check_collision(enemy, bullet):
-        enemy_dies()
-
-
-
-class Player(General):
-    def is_dead(self): #esse parametro possivelmente vai para o General qnd a gente randomizar as berries e os pokemons
+    def is_dead(self):
         '''
         This method checks if the player life has reached zero.
         '''
@@ -37,13 +25,47 @@ class Player(General):
         else:
             return False
 
-    if General.check_collision(player, berry):
+class Berry(pg.sprite.Sprite):
+    #responsável por criar as berries
+    def __init__(self, width, height, windowWidth, windowHeight, tela):
+                super().__init__()
+                self.width = width
+                self.height = height
+                self.image = pg.transform.scale(pg.image.load('assets/berry.png'), (self.width, self.height))
+                self.velocidadeY = 1
+                self.windowWidth = windowWidth
+                self.windowHeight = windowHeight
+                self.x = randint(0, self.windowWidth-self.width)
+                self.y = -height
+                self.tela = tela
+                self.rect = self.image.get_rect()
+                self.life = 3
+            
+    def draw(self):
+        #desenha a imagem na tela do jogo.
+        self.tela.blit(self.image, (self.x,self.y))
+
+    def update(self):
+        # movimenta o pokemon de acordo com a velocidade.
+        self.y += self.velocidadeY
+        if self.y >= self.windowHeight:
+            self.y = -self.height
+        self.x = randint(0, self.windowWidth-self.width)
+        self.rect.topleft = (self.x,self.y)
+
+
+
+class Enemy(General):
+    
+    def enemy_loss(inimigo):
+        inimigo.life -= 1
+
+
+class Player(General):
+
+    def player_gain(player):
         player.life += 1 #da para criar berry com poderes diferentes e colocar em condicoes etc.
     
-    if General.check_collision(player, enemy):
+    def player_loss(player):
         player.life -= 1
-        is_dead()
-    
-    if is_dead():
-        player.kill()
-        #e tem que acabar o jogo
+        General.is_dead()

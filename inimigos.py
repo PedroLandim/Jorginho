@@ -20,6 +20,7 @@ class Farfetch(pg.sprite.Sprite):
     self.y = -height
     self.tela = tela
     self.rect = self.image.get_rect()
+    self.life = 1
     
   def draw(self):
     #desenha a imagem na tela do jogo.
@@ -54,6 +55,7 @@ class Zubat(pg.sprite.Sprite):
     self.y = -height
     self.tela = tela
     self.rect = self.image.get_rect()
+    self.life = 1
     
   def draw(self):
     #desenha a imagem na tela do jogo.
@@ -81,6 +83,7 @@ class Dragonite(pg.sprite.Sprite):
     self.y = -height
     self.tela = tela
     self.rect = self.image.get_rect()
+    self.life = 3
     
   def draw(self):
     #desenha a imagem na tela do jogo.
@@ -108,6 +111,7 @@ class Pidgeot(pg.sprite.Sprite):
     self.y = -height
     self.tela = tela
     self.rect = self.image.get_rect()
+    self.life = 1
 
   def draw(self):
     #desenha a imagem na tela do jogo.

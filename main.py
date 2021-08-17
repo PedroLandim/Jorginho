@@ -1,7 +1,12 @@
+import pygame as pg
+import random
 from inimigos import *
 from movimentos import *
-import pygame as pg
+from vida import *
+
+
 pg.init()
+
 clock = pg.time.Clock()
 font = pg.font.Font(None,30)
 
@@ -13,6 +18,7 @@ pg.display.set_caption('Jorginho')
 
 inimigos = pg.sprite.Group()
 pikachu = Pikachu(110,110, largura, altura, tela)
+
 inimigos.add(Farfetch(80, 80, largura, altura, tela))
 inimigos.add(Pidgeot(100, 100, largura, altura, tela))
 inimigos.add(Zubat(60, 60, largura, altura, tela))
@@ -25,12 +31,38 @@ while True:
     if event.type == pg.QUIT:
       pg.quit()
       exit()
+  
   tela.blit(background,(0,0))
+  
   pikachu.draw()
   pikachu.update()
+  
   inimigos.draw(tela)
   inimigos.update()
+  
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
   tela.blit(fps,(50,50))
   clock.tick(60)
+
+  berry = Berry(60,60, largura, altura, tela)
+
+  for i in range (len(inimigos)):
+    if General.check_collision(inimigos[i], bullet):
+      Enemy.enemy_loss(inimigos[i])
+      if General.is_dead:
+        #gerar berry
+        parameter = random.randrange(0, 1)
+        if parameter == 1:
+            berry.draw()
+            berry.update()
+  
+  if General.check_collision(pikachu, Berry):
+    Player.player_gain(pikachu)
+
+  if General.check_collision(pikachu, inimigos):
+    Player.player_loss(pikachu)
+    if General.is_dead:
+        Pikachu.kill()
+        #tem que acabar com o jogo aqui
+    
   pg.display.update()

@@ -13,6 +13,7 @@ class Pikachu(pg.sprite.Sprite):
         self.y = 600
         self.tela = tela
         self.direcao = -1
+        self.life = 3
     
     def draw(self):
         self.tela.blit(self.img, (self.x, self.y))
