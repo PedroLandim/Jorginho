@@ -3,7 +3,7 @@
 from movimentos import Pikachu
 import pygame as pg
 from random import randint
-
+'''
 #rrrr
 class Bala(pg.sprite.Sprite):
     def __init__(self, windowWidth, windowHeight, width):
@@ -21,7 +21,7 @@ class Bala(pg.sprite.Sprite):
         self.rect.top = self.rect.top - self.velocidadeBala
 
 
-#rrr
+#rrr'''
 
 class General(pg.sprite.Sprite):
     def check_collision(sprite: pg.sprite.Sprite, group: pg.sprite.Group):
