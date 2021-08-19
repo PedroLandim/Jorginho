@@ -8,10 +8,10 @@ from vida import *
 pg.init()
 
 clock = pg.time.Clock()
-font = pg.font.Font(None,30)
+font = pg.font.SysFont("arial",30)
+pontos = 0
 
 largura, altura = 600, 720
-
 
 tela = pg.display.set_mode((largura,altura))
 pg.display.set_caption('Jorginho')
@@ -30,6 +30,8 @@ bala = pg.sprite.Group()
 background = pg.image.load("Assets/background.jpeg")
 
 while True:
+  mensagem = f"{pontos}"
+  pontuacao = font.render(mensagem, False, "WHITE")
   for event in pg.event.get():
     if event.type == pg.QUIT:
       pg.quit()
@@ -46,15 +48,20 @@ while True:
       lista_depok.append("D")
   if "F" not in lista_depok:
     inimigos.add(Farfetch(80, 80, largura, altura, tela))
+    pontos += 50
   if "P" not in lista_depok:
     inimigos.add(Pidgeot(100, 100, largura, altura, tela))
+    pontos += 25
   if "Z" not in lista_depok:
     inimigos.add(Zubat(60, 60, largura, altura, tela))
+    pontos += 10
   if "D" not in lista_depok:
     inimigos.add(Dragonite(160, 160, largura, altura, tela))
+    pontos += 100 
     
   tela.fill((0,0,0))
   tela.blit(background,(0,0))
+  tela.blit(pontuacao, (30, 30))
   tempo = pg.time.get_ticks()
   pikachu.draw()
   pikachu.update(bala, tempo)
@@ -69,7 +76,7 @@ while True:
   bala.draw(tela)
 
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
-  tela.blit(fps,(50,50))
+ 
   clock.tick(60)
 
   if General.check_collision(pikachu, berries):
