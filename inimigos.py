@@ -4,7 +4,6 @@ import random
 from vida import *
 
 
-
 class Farfetch(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
   def __init__(self, width, height, windowWidth, windowHeight, tela):
