@@ -33,7 +33,25 @@ while True:
     if event.type == pg.QUIT:
       pg.quit()
       exit()
-  
+  lista_depok = []
+  for i in inimigos:
+    if type(i) == Farfetch:
+      lista_depok.append("F")
+    if type(i) == Pidgeot:
+      lista_depok.append("P")
+    if type(i) == Zubat:
+      lista_depok.append("Z")
+    if type(i) == Dragonite:
+      lista_depok.append("D")
+  if "F" not in lista_depok:
+    inimigos.add(Farfetch(80, 80, largura, altura, tela))
+  if "P" not in lista_depok:
+    inimigos.add(Pidgeot(100, 100, largura, altura, tela))
+  if "Z" not in lista_depok:
+    inimigos.add(Zubat(60, 60, largura, altura, tela))
+  if "D" not in lista_depok:
+    inimigos.add(Dragonite(160, 160, largura, altura, tela))
+    
   tela.fill((0,0,0))
   tela.blit(background,(0,0))
   tempo = pg.time.get_ticks()
