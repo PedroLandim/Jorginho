@@ -7,7 +7,7 @@ class Pikachu(pg.sprite.Sprite):
         super().__init__()
         self.width = width
         self.height = height
-        self.image = pg.transform.scale(pg.image.load("Assets/pikachuskatista2.png"), (self.width, self.height))
+        self.image = pg.transform.scale(pg.image.load("Assets/pikachuskatista.png"), (self.width, self.height))
         self.velocidadeX = 3
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
