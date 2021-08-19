@@ -26,7 +26,6 @@ inimigos.add(Dragonite(160, 160, largura, altura, tela))
 berries = pg.sprite.Group()
 bala = pg.sprite.Group()
 
-
 background = pg.image.load("Assets/background.jpeg")
 
 while True:
@@ -35,19 +34,20 @@ while True:
       pg.quit()
       exit()
   
+  tela.fill((0,0,0))
   tela.blit(background,(0,0))
-  
+  tempo = pg.time.get_ticks()
   pikachu.draw()
-  pikachu.update()
+  pikachu.update(bala, tempo)
 
-  inimigos.draw(tela)
   inimigos.update(bala, berries)
+  inimigos.draw(tela)
 
-  berries.draw(tela)
   berries.update()
-
-  bala.draw(tela)
+  berries.draw(tela)
+  
   bala.update()
+  bala.draw(tela)
 
   fps = font.render(str(int(clock.get_fps())),True,"WHITE")
   tela.blit(fps,(50,50))
@@ -57,7 +57,8 @@ while True:
     Player.player_gain(pikachu)
 
   if General.check_collision(pikachu, inimigos):
-    Player.player_loss(pikachu)
-        #tem que acabar com o jogo aqui
+    if Player.player_loss(pikachu):
+      break
+      #tem que acabar com o jogo aqui
 
   pg.display.update()

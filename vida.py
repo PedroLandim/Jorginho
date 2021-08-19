@@ -31,6 +31,7 @@ class General(pg.sprite.Sprite):
         This function checks if any sprites from group collide with sprite.
         """
         if pg.sprite.spritecollide(sprite, group, dokill=True):
+            print('collision')
             return True
         return False
 
@@ -77,6 +78,8 @@ class Enemy(General):
     
     def enemy_loss(inimigo):
         inimigo.life -= 1
+        if inimigo.life < 1:
+            inimigo.kill()
 
 
 class Player(General):
@@ -88,4 +91,4 @@ class Player(General):
     def player_loss(player):
         player.life -= 1
         if player.life < 1:
-            player.kill()
+            return True

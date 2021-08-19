@@ -24,15 +24,12 @@ class Farfetch(pg.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.life = 1
     
-  def draw(self):
-    #desenha a imagem na tela do jogo.
-    self.tela.blit(self.image, (self.x,self.y))
 
   def update(self, bullet, berries):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead():
+      if General.is_dead(self):
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -69,15 +66,12 @@ class Zubat(pg.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.life = 1
     
-  def draw(self):
-    #desenha a imagem na tela do jogo.
-    self.tela.blit(self.image, (self.x,self.y))
 
   def update(self, bullet, berries):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead():
+      if General.is_dead(self):
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -106,15 +100,12 @@ class Dragonite(pg.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.life = 3
     
-  def draw(self):
-    #desenha a imagem na tela do jogo.
-    self.tela.blit(self.image, (self.x,self.y))
 
   def update(self, bullet, berries):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead():
+      if General.is_dead(self):
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -143,15 +134,12 @@ class Pidgeot(pg.sprite.Sprite):
     self.rect = self.image.get_rect()
     self.life = 1
 
-  def draw(self):
-    #desenha a imagem na tela do jogo.
-    self.tela.blit(self.image, (self.x,self.y))
 
   def update(self, bullet, berries):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
-      if General.is_dead():
+      if General.is_dead(self):
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
