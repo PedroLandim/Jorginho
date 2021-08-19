@@ -1,4 +1,5 @@
 import pygame as pg
+from sys import exit
 from inimigos import *
 from movimentos import *
 from vida import *

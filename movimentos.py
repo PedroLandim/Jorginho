@@ -12,7 +12,7 @@ class Pikachu(pg.sprite.Sprite):
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.x = windowWidth/2 - width/2
-        self.y = 600
+        self.y = 610
         self.tela = tela
         self.direcao = -1
         self.life = 3
