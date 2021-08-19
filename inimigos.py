@@ -4,6 +4,7 @@ import random
 from vida import *
 
 
+
 class Farfetch(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
   def __init__(self, width, height, windowWidth, windowHeight, tela):
@@ -30,11 +31,11 @@ class Farfetch(pg.sprite.Sprite):
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
       if General.is_dead(self):
+        soma_pontos(50)
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
           berries.add(Berry(60,60, 600, 720, self.tela, self.x, self.y))
-          
 
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
@@ -49,6 +50,7 @@ class Farfetch(pg.sprite.Sprite):
       self.image = pg.transform.flip(self.image, True, False)
       self.velocidadeX = -self.velocidadeX
     self.rect.topleft = (self.x, self.y)
+    
 
 class Zubat(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
@@ -72,6 +74,7 @@ class Zubat(pg.sprite.Sprite):
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
       if General.is_dead(self):
+        soma_pontos(10)
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -106,6 +109,7 @@ class Dragonite(pg.sprite.Sprite):
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
       if General.is_dead(self):
+        soma_pontos(100)
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -140,6 +144,7 @@ class Pidgeot(pg.sprite.Sprite):
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
       if General.is_dead(self):
+        soma_pontos(25)
         #gerar berry
         parameter = random.randrange(0, 1)
         if parameter == 1:
@@ -151,5 +156,9 @@ class Pidgeot(pg.sprite.Sprite):
       self.y = -self.height
       self.x = randint(0, self.windowWidth-self.width)
     self.rect.topleft = (self.x,self.y)
-      
-      
+
+ponto = 0
+def soma_pontos(pontos):
+  global ponto
+  ponto += pontos
+  return ponto

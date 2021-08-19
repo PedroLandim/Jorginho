@@ -48,16 +48,12 @@ while True:
       lista_depok.append("D")
   if "F" not in lista_depok:
     inimigos.add(Farfetch(80, 80, largura, altura, tela))
-    pontos += 50
   if "P" not in lista_depok:
     inimigos.add(Pidgeot(100, 100, largura, altura, tela))
-    pontos += 25
   if "Z" not in lista_depok:
     inimigos.add(Zubat(60, 60, largura, altura, tela))
-    pontos += 10
   if "D" not in lista_depok:
     inimigos.add(Dragonite(160, 160, largura, altura, tela))
-    pontos += 100 
     
   tela.fill((0,0,0))
   tela.blit(background,(0,0))
@@ -65,8 +61,9 @@ while True:
   tempo = pg.time.get_ticks()
   pikachu.draw()
   pikachu.update(bala, tempo)
-
+  
   inimigos.update(bala, berries)
+  pontos = soma_pontos(0)
   inimigos.draw(tela)
 
   berries.update()
