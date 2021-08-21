@@ -81,7 +81,7 @@ while True:
     Player.player_buff(pikachu)
     tempo_atual = pg.time.get_ticks()
   
-  if tempo >= tempo_atual + 10000:
+  if tempo >= tempo_atual + 5000:
     Player.player_nerf(pikachu)
 
   if General.check_collision(pikachu, inimigos):
