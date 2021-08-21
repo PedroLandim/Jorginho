@@ -14,7 +14,7 @@ tempo_atual = 0
 largura, altura = 600, 720
 
 tela = pg.display.set_mode((largura,altura))
-pg.display.set_caption('Jorginho')
+pg.display.set_caption('PokeFall')
 
 inimigos = pg.sprite.Group()
 pikachu = Pikachu(110,110, largura, altura, tela)
