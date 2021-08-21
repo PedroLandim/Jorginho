@@ -1,7 +1,6 @@
 import pygame as pg
 from sys import exit
-from inimigos import *
-from movimentos import *
+from personagens import *
 from vida import *
 
 
@@ -10,6 +9,7 @@ pg.init()
 clock = pg.time.Clock()
 font = pg.font.SysFont("arial",30)
 pontos = 0
+tempo_atual = 0
 
 largura, altura = 600, 720
 
@@ -19,14 +19,10 @@ pg.display.set_caption('Jorginho')
 inimigos = pg.sprite.Group()
 pikachu = Pikachu(110,110, largura, altura, tela)
 
-inimigos.add(Farfetch(80, 80, largura, altura, tela))
-inimigos.add(Pidgeot(100, 100, largura, altura, tela))
-inimigos.add(Zubat(60, 60, largura, altura, tela))
-inimigos.add(Dragonite(160, 160, largura, altura, tela))
-
 berries = pg.sprite.Group()
+item = pg.sprite.Group()
 bala = pg.sprite.Group()
-
+  
 background = pg.image.load("Assets/background.jpeg")
 
 while True:
@@ -46,13 +42,13 @@ while True:
       lista_depok.append("Z")
     if type(i) == Dragonite:
       lista_depok.append("D")
-  if "F" not in lista_depok:
+  if "F" not in lista_depok and pontos >= 50:
     inimigos.add(Farfetch(80, 80, largura, altura, tela))
-  if "P" not in lista_depok:
+  if "P" not in lista_depok and pontos >= 150:
     inimigos.add(Pidgeot(100, 100, largura, altura, tela))
   if "Z" not in lista_depok:
     inimigos.add(Zubat(60, 60, largura, altura, tela))
-  if "D" not in lista_depok:
+  if "D" not in lista_depok and pontos >= 500:
     inimigos.add(Dragonite(160, 160, largura, altura, tela))
     
   tela.fill((0,0,0))
@@ -61,13 +57,15 @@ while True:
   tempo = pg.time.get_ticks()
   pikachu.draw()
   pikachu.update(bala, tempo)
-  
-  inimigos.update(bala, berries)
   pontos = soma_pontos(0)
+  inimigos.update(bala, berries, pikachu, item)
   inimigos.draw(tela)
-
+  
   berries.update()
   berries.draw(tela)
+
+  item.update()
+  item.draw(tela)
   
   bala.update()
   bala.draw(tela)
@@ -78,6 +76,13 @@ while True:
 
   if General.check_collision(pikachu, berries):
     Player.player_gain(pikachu)
+  
+  if General.check_collision(pikachu, item):
+    Player.player_buff(pikachu)
+    tempo_atual = pg.time.get_ticks()
+  
+  if tempo >= tempo_atual + 10000:
+    Player.player_nerf(pikachu)
 
   if General.check_collision(pikachu, inimigos):
     if Player.player_loss(pikachu):
