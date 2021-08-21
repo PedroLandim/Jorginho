@@ -80,7 +80,7 @@ class Zubat(pg.sprite.Sprite):
       if General.is_dead(self):
         soma_pontos(10)
         #gerar berry
-        parameter = random.randint(0, 10)
+        parameter = random.randint(0,10)
         if parameter == 1:
           parameter2 = random.randint(0, 2)
           if parameter2 == 1:
