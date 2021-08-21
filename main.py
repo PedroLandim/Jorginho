@@ -1,7 +1,7 @@
 import pygame as pg
 from sys import exit
 from personagens import *
-from vida import *
+from acoes import *
 
 
 pg.init()

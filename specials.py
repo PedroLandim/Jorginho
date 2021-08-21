@@ -1,6 +1,6 @@
 import pygame as pg
 from personagens import *
-from vida import *
+from acoes import *
 
 class Bullet(pg.sprite.Sprite):
     def __init__(self, x, y, tela):

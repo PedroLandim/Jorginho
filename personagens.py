@@ -1,7 +1,7 @@
 import pygame as pg
 from random import randint
 import random
-from vida import *
+from acoes import *
 from specials import *
 
 
@@ -19,7 +19,7 @@ class Farfetch(pg.sprite.Sprite):
     self.velocidadeX = 1.8
     self.windowWidth = windowWidth
     self.windowHeight = windowHeight
-    self.x = randint(0, self.windowWidth-self.width)
+    self.x = randint(0, self.windowWidth-self.width-1)
     self.y = -height
     self.tela = tela
     self.rect = self.image.get_rect()
