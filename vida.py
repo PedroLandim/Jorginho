@@ -34,7 +34,6 @@ class Enemy(General):
 class Player(General):
     def player_gain(player):
         if player.life < 3:
-            print(player.life)
             player.life += 1 #da para criar berry com poderes diferentes e colocar em condicoes etc.
     
     def player_loss(player):

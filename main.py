@@ -60,7 +60,18 @@ while True:
   pontos = soma_pontos(0)
   inimigos.update(bala, berries, pikachu, item)
   inimigos.draw(tela)
-  
+
+  if pikachu.life == 3:
+    imagem = pg.transform.scale(pg.image.load("Assets/3-HP.png"), (100, 40))
+    tela.blit(imagem, (largura-110,10))
+
+  elif pikachu.life == 2:
+    imagem = pg.transform.scale(pg.image.load("Assets/2-HP.png"), (100, 40))
+    tela.blit(imagem, (largura-110,10))
+  else:
+    imagem = pg.transform.scale(pg.image.load("Assets/1-HP.png"), (100, 40))
+    tela.blit(imagem, (largura-110,10))
+
   berries.update()
   berries.draw(tela)
 

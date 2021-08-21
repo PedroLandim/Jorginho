@@ -71,7 +71,7 @@ class Zubat(pg.sprite.Sprite):
     self.tela = tela
     self.rect = self.image.get_rect()
     self.life = 1
-    
+
 
   def update(self, bullet, berries, pikachu, item):
 
@@ -80,7 +80,7 @@ class Zubat(pg.sprite.Sprite):
       if General.is_dead(self):
         soma_pontos(10)
         #gerar berry
-        parameter = random.randint(0,10)
+        parameter = random.randint(0, 10)
         if parameter == 1:
           parameter2 = random.randint(0, 2)
           if parameter2 == 1:
