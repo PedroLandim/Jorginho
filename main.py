@@ -6,6 +6,16 @@ from acoes import *
 
 pg.init()
 
+som_de_item = pg.mixer.Sound("Sounds/item.wav")
+som_de_item.set_volume(0.2)
+som_de_vida = pg.mixer.Sound("Sounds/vida.wav")
+som_de_vida.set_volume(0.2)
+som_do_raio = pg.mixer.Sound("Sounds/thunder.wav")
+som_do_raio.set_volume(0.1)
+pg.mixer.music.set_volume(0.15)
+musica_de_fundo = pg.mixer.music.load("Sounds/music.mp3")
+pg.mixer.music.play(-1)
+
 clock = pg.time.Clock()
 font = pg.font.SysFont("arial",30)
 pontos = 0
@@ -72,6 +82,9 @@ while True:
     imagem = pg.transform.scale(pg.image.load("Assets/1-HP.png"), (100, 40))
     tela.blit(imagem, (largura-110,10))
 
+  if pg.key.get_pressed()[pg.K_SPACE]:
+    som_do_raio.play()
+
   berries.update()
   berries.draw(tela)
 
@@ -86,10 +99,12 @@ while True:
   clock.tick(60)
 
   if General.check_collision(pikachu, berries):
+    som_de_vida.play()
     Player.player_gain(pikachu)
   
   if General.check_collision(pikachu, item):
     Player.player_buff(pikachu)
+    som_de_item.play()
     tempo_atual = pg.time.get_ticks()
   
   if tempo >= tempo_atual + 5000:
