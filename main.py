@@ -7,16 +7,16 @@ from acoes import *
 pg.init()
 
 som_de_item = pg.mixer.Sound("Sounds/item.wav")
-som_de_item.set_volume(0.2)
+som_de_item.set_volume(0.1)
 som_de_vida = pg.mixer.Sound("Sounds/vida.wav")
-som_de_vida.set_volume(0.2)
+som_de_vida.set_volume(0.1)
 som_perde_vida = pg.mixer.Sound("Sounds/perder-vida.wav")
-som_perde_vida.set_volume(0.2)
+som_perde_vida.set_volume(0.1)
 som_acerta_tiro = pg.mixer.Sound("Sounds/acertar-tiro.wav")
-som_acerta_tiro.set_volume(0.03)
+som_acerta_tiro.set_volume(0.02)
 
-pg.mixer.music.set_volume(0.13)
-musica_de_fundo = pg.mixer.music.load("music.mp3")
+pg.mixer.music.set_volume(0.06)
+musica_de_fundo = pg.mixer.music.load("Sounds/music.mp3")
 pg.mixer.music.play(-1)
 
 clock = pg.time.Clock()
