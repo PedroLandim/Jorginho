@@ -7,7 +7,7 @@ from specials import *
 
 class Farfetch(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
-  def __init__(self, width, height, windowWidth, windowHeight, tela):
+  def __init__(self, width, height, windowWidth, windowHeight, tela, sound):
     super().__init__()
     angulo = 25
     self.width = width
@@ -24,12 +24,14 @@ class Farfetch(pg.sprite.Sprite):
     self.tela = tela
     self.rect = self.image.get_rect()
     self.life = 1
+    self.sound = sound
     
 
-  def update(self, bullet, berries, pikachu, item):
+  def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
+      sound.play()
       if General.is_dead(self):
         soma_pontos(25)
         #gerar berry
@@ -44,6 +46,7 @@ class Farfetch(pg.sprite.Sprite):
     self.y += self.velocidadeY
     self.x += self.velocidadeX
     if self.y >= self.windowHeight - self.height :
+      self.sound.play
       self.kill()
       if Player.player_loss(pikachu):
         pg.quit()
@@ -58,7 +61,7 @@ class Farfetch(pg.sprite.Sprite):
 
 class Zubat(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
-  def __init__(self, width, height, windowWidth, windowHeight, tela):
+  def __init__(self, width, height, windowWidth, windowHeight, tela,sound):
     super().__init__()
     self.width = width
     self.height = height
@@ -71,12 +74,14 @@ class Zubat(pg.sprite.Sprite):
     self.tela = tela
     self.rect = self.image.get_rect()
     self.life = 1
+    self.sound = sound
 
 
-  def update(self, bullet, berries, pikachu, item):
+  def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
+      sound.play()
       if General.is_dead(self):
         soma_pontos(10)
         #gerar berry
@@ -91,6 +96,7 @@ class Zubat(pg.sprite.Sprite):
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight - self.height :
+      self.sound.play()
       self.kill()
       if Player.player_loss(pikachu):
         pg.quit()
@@ -98,7 +104,7 @@ class Zubat(pg.sprite.Sprite):
 
 class Dragonite(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
-  def __init__(self, width, height, windowWidth, windowHeight, tela):
+  def __init__(self, width, height, windowWidth, windowHeight, tela, sound):
     super().__init__()
     self.width = width
     self.height = height
@@ -111,12 +117,14 @@ class Dragonite(pg.sprite.Sprite):
     self.tela = tela
     self.rect = self.image.get_rect()
     self.life = 3
+    self.sound = sound
     
 
-  def update(self, bullet, berries, pikachu, item):
+  def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
+      sound.play()
       if General.is_dead(self):
         soma_pontos(100)
         #gerar berry
@@ -131,6 +139,7 @@ class Dragonite(pg.sprite.Sprite):
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight - self.height :
+      self.sound.play()
       self.kill()
       if Player.player_loss(pikachu):
         pg.quit()
@@ -138,7 +147,7 @@ class Dragonite(pg.sprite.Sprite):
 
 class Pidgeot(pg.sprite.Sprite):
   # Classe responsável por criar o inimigo farfetch
-  def __init__(self, width, height, windowWidth, windowHeight, tela):
+  def __init__(self, width, height, windowWidth, windowHeight, tela, sound):
     super().__init__()
     self.width = width
     self.height = height
@@ -151,12 +160,14 @@ class Pidgeot(pg.sprite.Sprite):
     self.tela = tela
     self.rect = self.image.get_rect()
     self.life = 1
+    self.sound = sound
 
 
-  def update(self, bullet, berries, pikachu, item):
+  def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
       Enemy.enemy_loss(self)
+      sound.play()
       if General.is_dead(self):
         soma_pontos(50)
         #gerar berry
@@ -171,6 +182,7 @@ class Pidgeot(pg.sprite.Sprite):
     # movimenta o pokemon de acordo com a velocidade.
     self.y += self.velocidadeY
     if self.y >= self.windowHeight - self.height :
+      self.sound.play()
       self.kill()
       if Player.player_loss(pikachu):
         pg.quit()

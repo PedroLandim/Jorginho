@@ -10,9 +10,12 @@ som_de_item = pg.mixer.Sound("Sounds/item.wav")
 som_de_item.set_volume(0.2)
 som_de_vida = pg.mixer.Sound("Sounds/vida.wav")
 som_de_vida.set_volume(0.2)
-som_do_raio = pg.mixer.Sound("Sounds/thunder.wav")
-som_do_raio.set_volume(0.1)
-pg.mixer.music.set_volume(0.15)
+som_perde_vida = pg.mixer.Sound("Sounds/perder-vida.wav")
+som_perde_vida.set_volume(0.2)
+som_acerta_tiro = pg.mixer.Sound("Sounds/acertar-tiro.wav")
+som_acerta_tiro.set_volume(0.05)
+
+pg.mixer.music.set_volume(0.13)
 musica_de_fundo = pg.mixer.music.load("Sounds/music.mp3")
 pg.mixer.music.play(-1)
 
@@ -53,14 +56,14 @@ while True:
     if type(i) == Dragonite:
       lista_depok.append("D")
   if "F" not in lista_depok and pontos >= 50:
-    inimigos.add(Farfetch(80, 80, largura, altura, tela))
+    inimigos.add(Farfetch(80, 80, largura, altura, tela, som_perde_vida))
   if "P" not in lista_depok and pontos >= 150:
-    inimigos.add(Pidgeot(100, 100, largura, altura, tela))
+    inimigos.add(Pidgeot(100, 100, largura, altura, tela, som_perde_vida))
   if "Z" not in lista_depok:
-    inimigos.add(Zubat(60, 60, largura, altura, tela))
+    inimigos.add(Zubat(60, 60, largura, altura, tela, som_perde_vida))
   if "D" not in lista_depok and pontos >= 500:
-    inimigos.add(Dragonite(160, 160, largura, altura, tela))
-    
+    inimigos.add(Dragonite(160, 160, largura, altura, tela, som_perde_vida))
+  
   tela.fill((0,0,0))
   tela.blit(background,(0,0))
   tela.blit(pontuacao, (30, 30))
@@ -68,7 +71,7 @@ while True:
   pikachu.draw()
   pikachu.update(bala, tempo)
   pontos = soma_pontos(0)
-  inimigos.update(bala, berries, pikachu, item)
+  inimigos.update(bala, berries, pikachu, item, som_acerta_tiro)
   inimigos.draw(tela)
 
   if pikachu.life == 3:
@@ -81,9 +84,6 @@ while True:
   else:
     imagem = pg.transform.scale(pg.image.load("Assets/1-HP.png"), (100, 40))
     tela.blit(imagem, (largura-110,10))
-
-  if pg.key.get_pressed()[pg.K_SPACE]:
-    som_do_raio.play()
 
   berries.update()
   berries.draw(tela)
@@ -111,6 +111,7 @@ while True:
     Player.player_nerf(pikachu)
 
   if General.check_collision(pikachu, inimigos):
+    som_perde_vida.play()
     if Player.player_loss(pikachu):
       break
       #tem que acabar com o jogo aqui
