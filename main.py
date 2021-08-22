@@ -13,10 +13,10 @@ som_de_vida.set_volume(0.2)
 som_perde_vida = pg.mixer.Sound("Sounds/perder-vida.wav")
 som_perde_vida.set_volume(0.2)
 som_acerta_tiro = pg.mixer.Sound("Sounds/acertar-tiro.wav")
-som_acerta_tiro.set_volume(0.05)
+som_acerta_tiro.set_volume(0.03)
 
 pg.mixer.music.set_volume(0.13)
-musica_de_fundo = pg.mixer.music.load("Sounds/music.mp3")
+musica_de_fundo = pg.mixer.music.load("music.mp3")
 pg.mixer.music.play(-1)
 
 clock = pg.time.Clock()
