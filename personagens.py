@@ -26,7 +26,7 @@ class Farfetch(pg.sprite.Sprite):
     self.life = 1
     self.sound = sound
     
-
+  #Atualiza o Farfetch na tela
   def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
@@ -60,7 +60,7 @@ class Farfetch(pg.sprite.Sprite):
     
 
 class Zubat(pg.sprite.Sprite):
-  # Classe responsável por criar o inimigo farfetch
+  # Classe responsável por criar o inimigo zubat
   def __init__(self, width, height, windowWidth, windowHeight, tela,sound):
     super().__init__()
     self.width = width
@@ -76,7 +76,7 @@ class Zubat(pg.sprite.Sprite):
     self.life = 1
     self.sound = sound
 
-
+  #Atualiza o zubat na tela
   def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
@@ -103,7 +103,7 @@ class Zubat(pg.sprite.Sprite):
     self.rect.topleft = (self.x,self.y)
 
 class Dragonite(pg.sprite.Sprite):
-  # Classe responsável por criar o inimigo farfetch
+  # Classe responsável por criar o inimigo dragonite
   def __init__(self, width, height, windowWidth, windowHeight, tela, sound):
     super().__init__()
     self.width = width
@@ -146,7 +146,7 @@ class Dragonite(pg.sprite.Sprite):
     self.rect.topleft = (self.x,self.y)
 
 class Pidgeot(pg.sprite.Sprite):
-  # Classe responsável por criar o inimigo farfetch
+  # Classe responsável por criar o inimigo Pidgeot
   def __init__(self, width, height, windowWidth, windowHeight, tela, sound):
     super().__init__()
     self.width = width
@@ -162,7 +162,7 @@ class Pidgeot(pg.sprite.Sprite):
     self.life = 1
     self.sound = sound
 
-
+  #atualiza o pidgeot na tela
   def update(self, bullet, berries, pikachu, item, sound):
 
     if General.check_collision(self, bullet):
@@ -188,6 +188,8 @@ class Pidgeot(pg.sprite.Sprite):
         pg.quit()
     self.rect.topleft = (self.x,self.y)
 
+
+# Classe responsável por criar o pikachu
 class Pikachu(pg.sprite.Sprite):
 
   def __init__(self, width, height, windowWidth, windowHeight, tela):
@@ -208,11 +210,11 @@ class Pikachu(pg.sprite.Sprite):
       self.intervalo = 500
       self.tempo = 10
 
- 
+  #Cria o desenho do pikachu
   def draw(self):
       self.tela.blit(self.image, (self.x, self.y))
 
-
+  #atualiza o pikachu na tela
   def update(self, bala, tempo):
       comandos = pg.key.get_pressed()
       if comandos[pg.K_RIGHT] and self.x < self.windowWidth-self.width:
@@ -230,7 +232,8 @@ class Pikachu(pg.sprite.Sprite):
               bala.add(Bullet(self.x+self.width/2, self.y, self.tela))
               self.tempoAnterior = pg.time.get_ticks()
       self.rect.topleft = (self.x, self.y)
-      
+
+#Gambiarra que faz a pontuação
 ponto = 0
 def soma_pontos(pontos):
   global ponto

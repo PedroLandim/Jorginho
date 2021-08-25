@@ -2,6 +2,7 @@ import pygame as pg
 from personagens import *
 from acoes import *
 
+#Cria o tiro do pikachu
 class Bullet(pg.sprite.Sprite):
     def __init__(self, x, y, tela):
 
@@ -19,7 +20,7 @@ class Bullet(pg.sprite.Sprite):
         #velocidade
         self.speed = 5
 
-
+    #atualiza o raio na tela
     def update(self):
         self.y -= self.speed
         if self.y <= 0:
@@ -27,8 +28,9 @@ class Bullet(pg.sprite.Sprite):
         #aqui tem que criar if bater no pokemon ela se destroi, senao passa direto ate o final da tela
         self.rect.center = (self.x, self.y)
 
+
 class Berry(pg.sprite.Sprite):
-    #responsável por criar as berries
+    #responsável por criar o item que cura a vida
     def __init__(self, windowWidth, windowHeight, tela, pokemonX, pokemonY):
                 super().__init__()
                 self.width = 30
@@ -55,7 +57,7 @@ class Berry(pg.sprite.Sprite):
 
 
 class Buff(pg.sprite.Sprite):
-    #responsável por criar as berries
+    #responsável por criar o item que buffa o pikachu
     def __init__(self, windowWidth, windowHeight, tela, pokemonX, pokemonY):
                 super().__init__()
                 self.width = 30

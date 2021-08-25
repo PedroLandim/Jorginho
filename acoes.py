@@ -1,5 +1,3 @@
-#qnd inimigo morre - gera berry, se sprite da berry entrar em contato com o pokemon +1 vida
-#qnd se entra em contato com o pokemon, o inimigo tira uma qtd de vida x dele e some da tela
 from personagens import *
 import pygame as pg
 from random import randint
@@ -7,24 +5,23 @@ from random import randint
 class General(pg.sprite.Sprite):
     def check_collision(sprite: pg.sprite.Sprite, group: pg.sprite.Group):
         """
-        sprite parameter: Sprite that will be used for collision checking
-        group parameter: group of sprites that will be checked
-        This function checks if any sprites from group collide with sprite.
+        parametro da sprite: Sprite que vai ser usada para checar colisões
+        parametro do grupo: grupo de sprites que vai ser checado
+        Essa função checa se uma sprite de um grupo colide com uma outra sprite.
         """
         if pg.sprite.spritecollide(sprite, group, dokill=True):
             return True
         return False
 
     def is_dead(self):
-        '''
-        This method checks if the player life has reached zero.
-        '''
+        #Essa função checa se a vida do personagem chegou a zero
         if self.life <1:
             return True
         else:
             return False
 
 
+#Checa se o inimigo perdeu vida/morreu
 class Enemy(General):
     def enemy_loss(inimigo):
         inimigo.life -= 1
@@ -32,19 +29,23 @@ class Enemy(General):
             inimigo.kill()
 
 class Player(General):
+    #Checa se o pikachu vai ganhar vida
     def player_gain(player):
         if player.life < 3:
-            player.life += 1 #da para criar berry com poderes diferentes e colocar em condicoes etc.
+            player.life += 1
     
+    #Checa se o pikachu perdeu vida/morreu
     def player_loss(player):
         player.life -= 1
         if player.life < 1:
             return True
 
+    #Buffa o pikachu
     def player_buff(player):
         player.velocidadeX = 5
         player.intervalo = 250
 
+    #Nerfa o pikachu
     def player_nerf(player):
         player.velocidadeX = 3
         player.intervalo = 500
