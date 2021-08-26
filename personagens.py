@@ -2,7 +2,7 @@ import pygame as pg
 from random import randint
 import random
 from acoes import *
-from specials import *
+from extras import *
 
 
 class Farfetch(pg.sprite.Sprite):
